@@ -1,4 +1,4 @@
-const pg = require('./pg');
+const pg = require('pg');
 const config = {
 	user: 'wenyaolee',
 	host: '127.0.0.1',

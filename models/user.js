@@ -4,8 +4,8 @@ module.exports = function(db) {
 		db.query(queryString, values, callback);
 	};
 
-	let userModelLogUserIn = (queryString, values, callback) => {
-		db.query(queryString, values, callback);
+	let userModelLogUserIn = (queryString, callback) => {
+		db.query(queryString, callback);
 	};
 
 	return {

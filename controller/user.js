@@ -40,19 +40,25 @@ module.exports = function(db) {
 
 		let user_nameInput = request.body['inputUserName'];
 		let user_hashedPw = sha256(request.body['inputPassword']);
-		//console.log("user_hashedPw: " +typeof+user_hashedPw);
-		console.log(user_nameInput);
 
-		const queryString = "SELECT * FROM user_table WHERE user_name = $1 AND password = $2";
-		let values = [user_nameInput, user_hashedPw];
-		db.user.userModelLogUserIn(queryString, values, (err, result) => {
+		const queryString = "SELECT user_name, password FROM user_table";
+
+		db.user.userModelLogUserIn(queryString, (err, result) => {
 			if(err){
 				console.log('QUERY ERROR IN RETRIEVING USERNAME AND PW');
 			} else {	
-				console.log('Query ', result);
+				console.log('Query result', result.rows)
 
+				result.rows.forEach(function(row) {
 
-
+					if((user_nameInput === row.user_name) && (user_hashedPw === row.password)){
+						response.render('userHomePage');
+					} else if ((user_nameInput === row.user_nameInput) || (user_hashedPw !== row.password)) {
+						//alert to enter correct password
+					} else if ((user_nameInput !== row.user_nameInput) || (user_hashedPw === row.password)) {
+						//alert to enter correct username 
+					}
+				});
 				}
 		});
 	}

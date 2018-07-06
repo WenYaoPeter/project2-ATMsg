@@ -16,24 +16,47 @@ module.exports = function(db) {
 
 	const signUserUp = (request, response) => {
 		//insert into database new user name, pw and email
-		//response.render(userHomePage);
-	}
+		let user_nameInput = request.body['inputUserName'];	
+		let passwordInput = sha256(request.body['inputPassword']);
+		let emailInput = request.body['inputEmail'];
+
+		console.log('user_nameInput length in signUserUp controller: ' +user_nameInput.length);
+		console.log('passwordInput in signUserUp controller: '+passwordInput);
+		console.log('emailInput in signUserUp controller : '+emailInput);
+
+			let queryString = 'INSERT INTO user_table (user_name, password, email) VALUES ($1 ,$2 , $3) RETURNING *'
+			let values = [user_nameInput, passwordInput, emailInput];
+			db.user.userModelSignUserUp(queryString, values, (err, result) => {
+		      if(err) {
+		        console.log('QUERY ERROR IN REGISTERING NEW USER', err.stack);
+		      } else {
+		        console.log('QUERY RESULT FOR REGISTERING NEW USER', result.rows);
+					response.render('userHomePage');
+		      }
+			});
+		}
 
 	const logUserIn = (request, response) => {
 
-		let user_name = request.body['inputUserName'];
+		let user_nameInput = request.body['inputUserName'];
 		let user_hashedPw = sha256(request.body['inputPassword']);
-		console.log("user_hashedPw: " +user_hashedPw);
+		//console.log("user_hashedPw: " +typeof+user_hashedPw);
+		console.log(user_nameInput);
 
-		//check with database if user_name && pw is the same as db username
-		//if same, log user in - and render UserHomePage
-		//else prompt user to re log in
+		const queryString = "SELECT * FROM user_table WHERE user_name = $1 AND password = $2";
+		let values = [user_nameInput, user_hashedPw];
+		db.user.userModelLogUserIn(queryString, values, (err, result) => {
+			if(err){
+				console.log('QUERY ERROR IN RETRIEVING USERNAME AND PW');
+			} else {	
+				console.log('Query ', result);
 
-		const SALT = "salt is the secret word";
-		let currentSessionCookie = sha256(user_name + 'logged_id' + SALT);
-		console.log("seesion cookie: " +currentSessionCookie);
-		response.cookie('logged_id', currentSessionCookie);
+
+
+				}
+		});
 	}
+
 
 	const getFindAtmForm = (request, response) => {
 		response.render('atmSearchForm');

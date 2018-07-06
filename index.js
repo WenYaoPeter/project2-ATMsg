@@ -6,6 +6,7 @@ const sha256 = require('js-sha256');
 
 const app = express();
 
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended : true}));
 app.use(methodOverride('_method'));
 app.use(cookieParser());

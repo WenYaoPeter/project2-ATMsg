@@ -14,7 +14,7 @@ module.exports = (app, db) => {
 
 
 
-	app.post('/userHome/', usersController.logUserIn);
+	app.post('/userHome', usersController.logUserIn);
 	app.post('/signUserUp', usersController.signUserUp);
 
 	//routes related to atms

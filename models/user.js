@@ -1,11 +1,16 @@
 module.exports = function(db) {
 	
-	let userModelGetHomeLoginPage = (queryString, callback) => {
-		db.query(queryString, callback);
+	let userModelSignUserUp = (queryString, values, callback) => {
+		db.query(queryString, values, callback);
+	};
+
+	let userModelLogUserIn = (queryString, values, callback) => {
+		db.query(queryString, values, callback);
 	};
 
 	return {
-		userModelGetHomeLoginPage : userModelGetHomeLoginPage
+		userModelSignUserUp : userModelSignUserUp,
+		userModelLogUserIn : userModelLogUserIn
 	}
 }
 

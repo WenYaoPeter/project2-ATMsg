@@ -1,44 +1,33 @@
 var React = require("react");
+var DefaultLayout = require("./defaultlayout");
 
 class FindAtm extends React.Component {
 	render(){
-
+//console.log(chosenBank);
 		return (
+			<DefaultLayout>
+				<h2>ATM<span>sg</span></h2>
 
-				<html>
-				<head>
-					<title></title>
-					<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossOrigin="anonymous"/>
-				</head>
-					<body>
-					<h2>ATMsg</h2>
+				<form action="/list_of_Atms" method="POST">
+				<input list="banks" name="chosenBank"/>
+					<datalist id="banks">
+					  <option value="UOB"></option>
+					  <option value="DBS"></option>
+					  <option value="CITIBANK"></option>
+					</datalist>
+				<input type="submit"/>
 
+				<input list="areas" name="chosenArea"/>
+					<datalist id="areas">
+					  <option value="Orchard"></option>
+					  <option value="Tampines"></option>
+					</datalist>
+				<input type="submit"/>
 
-					<ul class="navbar-nav">
-					    <li class="nav-item py-md-2">
-					       <a href="#" class="nav-link">Home</a>
-					    </li>
-					    <li class="nav-item py-md-2">
-					       <a href="#" class="nav-link">Link</a>
-					    </li>
-					    <li class="nav-item py-md-2">
-					       <a href="#" class="nav-link">Link</a>
-					    </li>
-					    <li class="nav-item py-md-2">
-					       <a href="#" class="nav-link">More</a>
-					    </li>
-					    <li class="nav-item py-md-2">
-					       <a href="#" class="nav-link">Options</a>
-					    </li>
-					</ul>
+				</form>
 
-						<div>
-							<p>UOB</p> <p>DBS</p> <p>CITIBANK</p>
-						</div>
-
-					</body>
-					</html>
-		)
+			</DefaultLayout>
+		);
 	}
 }
 

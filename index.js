@@ -3,10 +3,12 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const db = require('./db');
 const sha256 = require('js-sha256');
+const path = require('path');
 
 const app = express();
 
 app.use(express.static('public'));
+app.use('public', express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended : true}));
 app.use(methodOverride('_method'));
 app.use(cookieParser());

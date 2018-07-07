@@ -1,14 +1,12 @@
 var React = require("react");
+var DefaultLayout = require("./defaultlayout");
 
 class UserHomePage extends React.Component {
 	render(){
-
-		<link rel="stylesheet" type="text/css" href="./public/style.css"/>
-
 		return (
 
-			<body>
-			<h2>ATMsg</h2>
+		<DefaultLayout>
+			<h2>ATM<span>sg</span></h2>
 			<h3>User Home Page</h3>
 				<form action="/userHome/find_atm_form" method="GET">
 					<input type="submit" value="Search For an ATM"/>
@@ -28,8 +26,7 @@ class UserHomePage extends React.Component {
 				<form action="/userHome/delete_atm_form" method="GET">				
 					<input type="submit" value="Delete an ATM"/>
 				</form>
-			</body>
-
+		</DefaultLayout>
 			);
 	}
 }

@@ -63,34 +63,12 @@ module.exports = function(db) {
 		});
 	}
 
-
-	const getFindAtmForm = (request, response) => {
-		response.render('atmSearchForm');
-	}
-
-	const getAddAtmForm = (request, response) => {
-		response.render('atmAddForm');
-	}
-
-	const getEditAtmForm = (request, response) => {
-		response.render('atmEditForm');
-	}
-
-	const getDeleteAtmForm = (request, response) => {
-		response.render('atmDeleteForm');
-	}
-
-
 	return {
 		// get : get,
 		getHomeLoginPage : getHomeLoginPage,
 		getSignUpForm : getSignUpForm,
 		logUserIn : logUserIn,
-		signUserUp : signUserUp,
-		getFindAtmForm : getFindAtmForm,
-		getAddAtmForm : getAddAtmForm,
-		getEditAtmForm : getEditAtmForm,
-		getDeleteAtmForm : getDeleteAtmForm
+		signUserUp : signUserUp
 	};
 
 

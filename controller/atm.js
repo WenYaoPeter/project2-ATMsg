@@ -7,7 +7,18 @@ module.exports = function(db) {
 	// }
 
 	const getFindAtmForm = (request, response) => {
-		response.render('atmSearchForm');
+		const queryString = "SELECT DISTINCT area FROM atm_table";
+		db.atm.atmModelGetAtmArea(queryString, (err, result) => {
+		 	if(err) {
+				console.log('Query error in listAtms function', err.stack);
+		 	} else {
+		 		console.log('Query to get area successful', result.rows[0].area);
+		 		let content = {
+		 			atmsAreas : result.rows
+		 		} 
+				response.render('atmSearchForm', content);
+		 	}
+		});
 	}
 
 	const listAtms = (request, response) => {
@@ -22,9 +33,11 @@ module.exports = function(db) {
 		 	if(err) {
 				console.log('Query error in listAtms function', err.stack);
 		 	} else {
-				console.log('Query result for list of atms', result.rows[0].banklocation) 
+				console.log('Query result for list of atms') 
 				let content = {
-					atms : result.rows
+					atms : result.rows,
+					userBank : userBank,
+					userArea : userArea
 				}
 		 		response.render('listOfAtm', content);
 			}
@@ -35,8 +48,47 @@ module.exports = function(db) {
 		response.render('atmAddForm');
 	}
 
+	const addNewAtm = (request, response) => {
+
+		function firstLetterUppercase(string) 
+		{
+		    return string.charAt(0).toUpperCase() + string.slice(1);
+		}
+		let newBank = firstLetterUppercase(request.body['newBankInput']);
+		let newArea = firstLetterUppercase(request.body['newAreaInput']);
+		let newBankLocation = firstLetterUppercase(request.body['newBankLocation']);
+		let newAddr = request.body['newAddrInput'];
+
+		const queryString = "INSERT INTO atm_table (bank, area, address, banklocation) VALUES ($1, $2, $3, $4)";
+		let values = [newBank, newArea, newAddr, newBankLocation];
+
+		db.atm.atmModelAddNewAtm(queryString, values, (err, result) => {
+			if(err){
+				console.log('Query error in inserting into db', err.stack)
+			} else {
+				console.log('Query to insert successful')
+			}
+		})
+	}
+
 	const getEditAtmForm = (request, response) => {
-		response.render('atmEditForm');
+		//response.send(request.params.id);
+		console.log(typeof parseInt(request.params.id));
+		let idOfAtmToEdit = parseInt(request.params.id);
+		console.log("hello "+idOfAtmToEdit);
+
+		const queryString = "SELECT * FROM atm_table WHERE id="+idOfAtmToEdit;
+		db.atm.atmModelGetAtmToEdit(queryString, (err, result) => {
+			if(err) {
+				console.log('Query error in retrieving ATM to edit', err.stack)
+			} else {
+				console.log('Query to retrieve ATM to edit: ', result.rows[0].name);
+				let content = {
+					atmToEdit : result.rows[0]
+				}
+				response.render('atmEditForm', content);
+			}
+		})
 	}
 
 	const getDeleteAtmForm = (request, response) => {
@@ -49,6 +101,7 @@ module.exports = function(db) {
 		getAddAtmForm : getAddAtmForm,
 		getEditAtmForm : getEditAtmForm,
 		getDeleteAtmForm : getDeleteAtmForm,
-		listAtms : listAtms
+		listAtms : listAtms,
+		addNewAtm : addNewAtm
 	};
 }

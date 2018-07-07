@@ -1,11 +1,27 @@
 module.exports = function(db) {
+
+	let atmModelGetAtmArea = (queryString, callback) => {
+		db.query(queryString, callback);
+	};
 	
 	let atmModelGetAtm = (queryString, values, callback) => {
 		db.query(queryString, values, callback);
 	};
 
+	let atmModelAddNewAtm = (queryString, values, callback) => {
+		db.query(queryString, values, callback);
+	};
+
+	let atmModelGetAtmToEdit = (queryString, callback) => {
+		db.query(queryString, callback);
+	};
+
 
 	return {
-		atmModelGetAtm : atmModelGetAtm
+		atmModelGetAtmArea : atmModelGetAtmArea,
+		atmModelGetAtm : atmModelGetAtm,
+		atmModelAddNewAtm : atmModelAddNewAtm,
+		atmModelGetAtmToEdit : atmModelGetAtmToEdit
+
 	}
 }

@@ -9,8 +9,10 @@ class DefaultLayout extends React.Component {
 					<link rel="stylesheet" type="text/css" href="./style.css"/>
 					<title>ATM in SG</title>
 				</head>
-
-				<body>{this.props.children}</body>
+				<body>
+				<h2>ATM<span>sg</span></h2>
+				{this.props.children}
+				</body>
 			</html>
 
 			);

@@ -6,7 +6,6 @@ class UserHomePage extends React.Component {
 		return (
 
 		<DefaultLayout>
-			<h2>ATM<span>sg</span></h2>
 			<h3>User Home Page</h3>
 				<form action="/userHome/find_atm_form" method="GET">
 					<input type="submit" value="Search For an ATM"/>

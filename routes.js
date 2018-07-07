@@ -16,12 +16,11 @@ module.exports = (app, db) => {
 	app.get('/userHome/find_atm_form', atmsController.getFindAtmForm);
 	app.post('/list_of_Atms', atmsController.listAtms);
 	app.get('/userHome/add_atm_form', atmsController.getAddAtmForm);
-	app.get('/userHome/edit_atm_form', atmsController.getEditAtmForm);
+	app.post('/add_new_Atm', atmsController.addNewAtm);
+	app.get('/edit_atm_form/:id', atmsController.getEditAtmForm);
+
 	app.get('/userHome/delete_atm_form', atmsController.getDeleteAtmForm); //if down vote count >= 5
 
-
-
-	// app.get('/', atmsController.atmget);
 
 }
 

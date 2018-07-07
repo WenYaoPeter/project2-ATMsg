@@ -5,7 +5,6 @@ class SignUpForm extends React.Component {
 	render(){
 		return (
 			<DefaultLayout>
-				<h2>ATM<span>sg</span></h2>
 				<h3>Sign Up!</h3>
 					<form action="/signUserUp" method="POST">
 						<input type="text" name="inputUserName" placeholder="user name"/>

@@ -5,7 +5,6 @@ class Home extends React.Component {
 	render(){
 		return (
 				<DefaultLayout>
-					<h2>ATM<span>sg</span></h2>
 					<div className="container">
 					<div className="row inputs">
 						    <div className="col">

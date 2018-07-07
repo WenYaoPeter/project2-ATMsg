@@ -47,7 +47,7 @@ module.exports = function(db) {
 			if(err){
 				console.log('QUERY ERROR IN RETRIEVING USERNAME AND PW');
 			} else {	
-				console.log('Query result', result.rows)
+				console.log('Query RRRresult')
 
 				result.rows.forEach(function(row) {
 

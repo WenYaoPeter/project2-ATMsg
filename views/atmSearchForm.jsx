@@ -3,11 +3,14 @@ var DefaultLayout = require("./defaultlayout");
 
 class FindAtm extends React.Component {
 	render(){
-//console.log(chosenBank);
+	// console.log("inside jsx AREA: "+this.props.atmsAreas[0].area);
+
+	// const mapped = this.props.atmsAreas.map(atmsArea => {
+	// 	console.log(atmsArea.area);
+	// })
+
 		return (
 			<DefaultLayout>
-				<h2>ATM<span>sg</span></h2>
-
 				<form action="/list_of_Atms" method="POST">
 				<input list="banks" name="chosenBank"/>
 					<datalist id="banks">
@@ -19,10 +22,13 @@ class FindAtm extends React.Component {
 
 				<input list="areas" name="chosenArea"/>
 					<datalist id="areas">
-					  <option value="Orchard"></option>
-					  <option value="Tampines"></option>
+					{this.props.atmsAreas.map(atmsArea => (
+					  <option value={atmsArea.area}></option>
+						))}
 					</datalist>
 				<input type="submit"/>
+
+				
 
 				</form>
 

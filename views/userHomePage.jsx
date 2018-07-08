@@ -3,6 +3,13 @@ var DefaultLayout = require("./defaultlayout");
 
 class UserHomePage extends React.Component {
 	render(){
+		
+		let deleteMsgToUser;
+		if(this.props.msg){
+			deleteMsgToUser = this.props.msg
+			console.log(this.props.msg);
+		}
+
 		return (
 
 		<DefaultLayout>
@@ -16,15 +23,10 @@ class UserHomePage extends React.Component {
 					<input type="submit" value="Add an ATM"/>
 				</form>
 
+				<div>
+					{deleteMsgToUser}
+				</div>
 
-				<form action="/userHome/edit_atm_form" method="GET">				
-					<input type="submit" value="Edit an ATM"/>
-				</form>
-
-
-				<form action="/userHome/delete_atm_form" method="GET">				
-					<input type="submit" value="Delete an ATM"/>
-				</form>
 		</DefaultLayout>
 			);
 	}

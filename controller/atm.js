@@ -73,16 +73,16 @@ module.exports = function(db) {
 
 	const getEditAtmForm = (request, response) => {
 		//response.send(request.params.id);
-		console.log(typeof parseInt(request.params.id));
-		let idOfAtmToEdit = parseInt(request.params.id);
-		console.log("hello "+idOfAtmToEdit);
+		//console.log(typeof parseInt(request.params.id));
+		 let idOfAtmToEdit = parseInt(request.params.id);
+		// console.log("hello request.params.id " +typeof idOfAtmToEdit);
 
 		const queryString = "SELECT * FROM atm_table WHERE id="+idOfAtmToEdit;
 		db.atm.atmModelGetAtmToEdit(queryString, (err, result) => {
 			if(err) {
 				console.log('Query error in retrieving ATM to edit', err.stack)
 			} else {
-				console.log('Query to retrieve ATM to edit: ', result.rows[0].name);
+				console.log('Query to retrieve ATM to edit: ', result.rows[0]);
 				let content = {
 					atmToEdit : result.rows[0]
 				}
@@ -91,8 +91,47 @@ module.exports = function(db) {
 		})
 	}
 
-	const getDeleteAtmForm = (request, response) => {
-		response.render('atmDeleteForm');
+	const updateEdit = (request, response) => {
+		let bankId = parseInt(request.params.id);
+		let updatedBank = request.body['bank'];
+		let updatedArea = request.body['area'];
+		let updatedBanklocation = request.body['banklocation'];
+		let updatedAddress = request.body['address'];
+
+		// console.log("request.params.id in updatEdit: "+typeof parseInt(request.params.id));
+		// console.log(typeof updatedBanklocation);		
+
+		const queryString = 'UPDATE atm_table SET bank=$1, area=$2, banklocation=$3, address=$4 WHERE id=$5';
+		let values = [updatedBank, updatedArea, updatedBanklocation, updatedAddress, bankId];
+		db.atm.atmModelUpdateEdit(queryString, (err, result) => {
+			if(err) {
+				console.log('Query error in updating database', err.stack);
+			} else {
+				console.log('Query to upate(PUT) successful', result);
+				response.send('putted');
+			}
+		})
+	}
+
+
+
+	const deleteAtm = (request, response) => {
+		let idToDelete = parseInt(request.params.id);
+		const queryString = "DELETE from atm_table WHERE id="+idToDelete;
+		db.atm.atmModelDeleteAtm(queryString, (err, result) => {
+			if(err){
+				console.log('Query error deleting ATM', err.stack);
+			} else {
+				console.log('Query to delete successful', result);
+
+				let deletedmsg = "ATM deleted";
+				let key = "key";
+				let content = {
+					msg : deletedmsg
+				}
+				response.render('userHomePage', content);
+			}
+		})
 	}
 
 	return {
@@ -100,8 +139,9 @@ module.exports = function(db) {
 		getFindAtmForm : getFindAtmForm,
 		getAddAtmForm : getAddAtmForm,
 		getEditAtmForm : getEditAtmForm,
-		getDeleteAtmForm : getDeleteAtmForm,
 		listAtms : listAtms,
-		addNewAtm : addNewAtm
+		addNewAtm : addNewAtm,
+		updateEdit : updateEdit,
+		deleteAtm : deleteAtm
 	};
 }

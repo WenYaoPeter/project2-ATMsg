@@ -18,7 +18,6 @@ class FindAtm extends React.Component {
 					  <option value="DBS"></option>
 					  <option value="CITIBANK"></option>
 					</datalist>
-				<input type="submit"/>
 
 				<input list="areas" name="chosenArea"/>
 					<datalist id="areas">

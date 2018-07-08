@@ -16,12 +16,21 @@ module.exports = function(db) {
 		db.query(queryString, callback);
 	};
 
+	let atmModelUpdateEdit = (queryString, callback) => {
+		db.query(queryString, callback);
+	}
+
+	let atmModelDeleteAtm = (queryString, callback) => {
+		db.query(queryString, callback);
+	}
+
 
 	return {
 		atmModelGetAtmArea : atmModelGetAtmArea,
 		atmModelGetAtm : atmModelGetAtm,
 		atmModelAddNewAtm : atmModelAddNewAtm,
-		atmModelGetAtmToEdit : atmModelGetAtmToEdit
-
-	}
+		atmModelGetAtmToEdit : atmModelGetAtmToEdit,
+		atmModelUpdateEdit : atmModelUpdateEdit,
+		atmModelDeleteAtm : atmModelDeleteAtm
+	};
 }

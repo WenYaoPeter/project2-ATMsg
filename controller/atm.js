@@ -75,11 +75,15 @@ module.exports = function(db) {
 		//response.send(request.params.id);
 		//console.log(typeof parseInt(request.params.id));
 		 let idOfAtmToEdit = parseInt(request.params.id);
-		// console.log("hello request.params.id " +typeof idOfAtmToEdit);
+		 console.log("requst.params.id: ", request.params.id)
+		 console.log("hello request.params.id::: " + idOfAtmToEdit);
 
 		const queryString = "SELECT * FROM atm_table WHERE id="+idOfAtmToEdit;
+		console.log("QUERYYSTRINGGGGGG: ", queryString)
+		console.log("parseInt:: ", parseInt(idOfAtmToEdit));
 		db.atm.atmModelGetAtmToEdit(queryString, (err, result) => {
 			if(err) {
+				console.log("HAHAAHAHA: ", idOfAtmToEdit);				
 				console.log('Query error in retrieving ATM to edit', err.stack)
 			} else {
 				console.log('Query to retrieve ATM to edit: ', result.rows[0]);
@@ -98,17 +102,22 @@ module.exports = function(db) {
 		let updatedBanklocation = request.body['banklocation'];
 		let updatedAddress = request.body['address'];
 
-		// console.log("request.params.id in updatEdit: "+typeof parseInt(request.params.id));
-		// console.log(typeof updatedBanklocation);		
+		console.log("request.params.id in updatEdit: "+typeof parseInt(request.params.id));
+		console.log("typeof ", typeof bankId);		
+		console.log("bankId: ", bankId)
 
 		const queryString = 'UPDATE atm_table SET bank=$1, area=$2, banklocation=$3, address=$4 WHERE id=$5';
 		let values = [updatedBank, updatedArea, updatedBanklocation, updatedAddress, bankId];
-		db.atm.atmModelUpdateEdit(queryString, (err, result) => {
+		db.atm.atmModelUpdateEdit(queryString, values, (err, result) => {
 			if(err) {
 				console.log('Query error in updating database', err.stack);
 			} else {
 				console.log('Query to upate(PUT) successful', result);
-				response.send('putted');
+				let edittedmsg = "ATM editted";
+				let content = {
+					editMsg : edittedmsg
+				}
+				response.render('userHomePage', content);
 			}
 		})
 	}
@@ -125,9 +134,8 @@ module.exports = function(db) {
 				console.log('Query to delete successful', result);
 
 				let deletedmsg = "ATM deleted";
-				let key = "key";
 				let content = {
-					msg : deletedmsg
+					deleteMsg : deletedmsg
 				}
 				response.render('userHomePage', content);
 			}

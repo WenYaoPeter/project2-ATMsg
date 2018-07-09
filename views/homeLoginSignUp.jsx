@@ -5,35 +5,23 @@ class Home extends React.Component {
 	render(){
 		return (
 				<DefaultLayout>
-					<div className="container">
-					<div className="row inputs">
-						    <div className="col">
-						      UOB
-						    </div>
-						    <div className="col">
-						      DBS
-						    </div>
-						    <div className="col">
-						      CITIBANK
-						    </div>
+					<div>
+						ATMs In Singapore
 					</div>
-					<div className="row">
-						<div className="col-sm">
-						<form action="/userHome" method="POST">
+						     <p><span className="uob">UOB</span> <span id="dbs">DBS</span> <span id="citibank">CITIBANK</span></p>
 
+						<form action="/userHome" method="POST">
 							<input type="text" name="inputUserName" placeholder="user name"/>
 							<br/>
 							<input type="password" name="inputPassword" placeholder="password"/>
 							<br/>
 							<input type="submit" value="Login"/>
 						</form>
-						</div>
-					</div>
+
 						<form action="/signUpForm" method="GET">
 							<input type="submit" value="Sign Up"/>
 						</form>	
 
-					</div>
 				</DefaultLayout>	
 		);
 	}

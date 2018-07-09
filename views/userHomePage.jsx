@@ -5,9 +5,16 @@ class UserHomePage extends React.Component {
 	render(){
 		
 		let deleteMsgToUser;
-		if(this.props.msg){
-			deleteMsgToUser = this.props.msg
-			console.log(this.props.msg);
+		let editMsgToUser;
+
+		if(this.props.editMsg){
+			editMsgToUser = this.props.editMsg
+			console.log(this.props.editMsg);
+		}
+
+		if(this.props.deleteMsg){
+			deleteMsgToUser = this.props.deleteMsg
+			console.log(this.props.deleteMsg);
 		}
 
 		return (
@@ -25,6 +32,7 @@ class UserHomePage extends React.Component {
 
 				<div>
 					{deleteMsgToUser}
+					{editMsgToUser}
 				</div>
 
 		</DefaultLayout>

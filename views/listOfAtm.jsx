@@ -3,12 +3,6 @@ var DefaultLayout = require("./defaultlayout");
 
 class ListOfAtms extends React.Component {
 	render(){
-	// console.log("new inside jsx: "+this.props.atms[14].id);
-	// console.log("new inside jsx: "+this.props.atms[14].banklocation);
-	// console.log("new inside jsx: "+this.props.atms[14].address);
-	//console.log("inside jsx listofAtms ID: "+this.props.atms[0].id);
-	//let ulrToDelete = "/delete_Atm/" + atm.id + "?_method=DELETE";
-
 
 		return (
 			<DefaultLayout>

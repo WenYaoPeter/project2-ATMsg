@@ -16,8 +16,8 @@ module.exports = function(db) {
 		db.query(queryString, callback);
 	};
 
-	let atmModelUpdateEdit = (queryString, callback) => {
-		db.query(queryString, callback);
+	let atmModelUpdateEdit = (queryString, values, callback) => {
+		db.query(queryString, values, callback);
 	}
 
 	let atmModelDeleteAtm = (queryString, callback) => {

@@ -11,22 +11,33 @@ class FindAtm extends React.Component {
 
 		return (
 			<DefaultLayout>
-				<form action="/list_of_Atms" method="POST">
-					<input list="banks" name="chosenBank"/>
-						<datalist id="banks">
-						  <option value="UOB"></option>
-						  <option value="DBS"></option>
-						  <option value="CITIBANK"></option>
-						</datalist>
+			<div className="row justify-content-md-center">
 
-					<input list="areas" name="chosenArea"/>
-						<datalist id="areas">
-						{this.props.atmsAreas.map(atmsArea => (
-						  <option value={atmsArea.area}></option>
-						))}
-						</datalist>
-					<input type="submit"/>
+				<form action="/list_of_Atms" method="POST">
+         			<div className="form-group">
+         			 	
+         			 	<label for="searchByArea">Search By Bank</label>
+	        			<select className="form-control" id="banks" name="chosenBank">
+			              <option value=""></option>
+			              <option value="UOB">UOB</option>
+			              <option value="DBS">DBS</option>
+			              <option value="CITIBANK">CITIBANK</option>
+			        	</select>
+
+	         			<label for="searchByArea">Search By Area</label>
+	         			<br/>
+			            <select id="areas" name="chosenArea">
+			            	<option value=""></option>
+				            {this.props.atmsAreas.map(atmsArea => (
+				              <option value={atmsArea.area}>{atmsArea.area}</option>
+				            ))}
+			            </select>
+			            <br/>
+          				<button type="submit" className="btn btn-primary">Submit</button>
+          			
+          			</div>
 				</form>
+			</div>
 
 			</DefaultLayout>
 		);

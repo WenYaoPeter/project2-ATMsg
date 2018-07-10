@@ -8,7 +8,8 @@ const path = require('path');
 const app = express();
 
 app.use(express.static('public'));
-app.use('public', express.static(__dirname + '/public'));
+// app.use('public', express.static(__dirname + '/public'));
+
 app.use(express.urlencoded({ extended : true}));
 app.use(methodOverride('_method'));
 app.use(cookieParser());

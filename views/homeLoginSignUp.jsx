@@ -5,6 +5,7 @@ class Home extends React.Component {
 	render(){
 		return (
 				<DefaultLayout>
+
 						<div className="container">
 							<div className="row justify-content-md-center">
 								<div className="banner col jumbotron bg-danger">
@@ -12,7 +13,6 @@ class Home extends React.Component {
 										<h2>ATMs In <span className="whiteSg">SG</span></h2>
 									</div>
 								</div>
-								
 							</div>
 							<div className="row justify-content-md-center">
 								<div className="col text-right">

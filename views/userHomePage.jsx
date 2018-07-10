@@ -4,8 +4,9 @@ var DefaultLayout = require("./defaultlayout");
 class UserHomePage extends React.Component {
 	render(){
 		
-		let deleteMsgToUser;
 		let editMsgToUser;
+		let deleteMsgToUser;
+		let addMsgToUser;
 
 		if(this.props.editMsg){
 			editMsgToUser = this.props.editMsg
@@ -17,28 +18,44 @@ class UserHomePage extends React.Component {
 			console.log(this.props.deleteMsg);
 		}
 
+		if(this.props.addMsg){
+			addMsgToUser = this.props.addMsg
+			console.log(this.props.addMsg);
+		}
+
 		return (
 
 		<DefaultLayout>
-			<h3>User Home Page</h3>
-				<form action="/userHome/find_atm_form" method="GET">
-					<input type="submit" value="Search For an ATM"/>
-				</form>
 
-				<form className="form-inline mt-2 mt-md-0">
-		            <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
-		            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		        </form>
+			<section class="jumbotron text-center">
+		        <div class="container">
+         			<h1 class="jumbotron-heading">Home</h1>
+          			
+          			<div className="row justify-content-md-center">
+          				<p class="lead text-muted">Search For An ATM Or Contribute One</p>
+		            </div>
 
-				<form action="/userHome/add_atm_form" method="GET">				
-					<input type="submit" value="Add an ATM"/>
-				</form>
+		            <div className="row">
+			            <div className="col text-right">
+							<form action="/userHome/find_atm_form" method="GET">
+								<button type="submit" className="btn btn-info">Search</button>
+							</form>
+			            </div>
 
+			            <div className="col text-left">
+			            	<form action="/userHome/add_atm_form" method="GET">				
+								<button type="submit" className="btn btn-secondary my-2">Contribute</button>
+							</form>
+			            </div>
+			        </div>
+
+	        	</div>
+	      	</section>
 				<div>
-					{deleteMsgToUser}
 					{editMsgToUser}
+					{deleteMsgToUser}
+					{addMsgToUser}
 				</div>
-
 		</DefaultLayout>
 			);
 	}

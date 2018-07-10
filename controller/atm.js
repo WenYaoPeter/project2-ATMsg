@@ -67,6 +67,11 @@ module.exports = function(db) {
 				console.log('Query error in inserting into db', err.stack)
 			} else {
 				console.log('Query to insert successful')
+				let addedmsg = "ATM added";
+				let content = {
+					addMsg : addedmsg
+				}
+				response.render('userHomePage', content);
 			}
 		})
 	}

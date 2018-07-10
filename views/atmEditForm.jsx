@@ -3,10 +3,10 @@ var DefaultLayout = require("./defaultlayout");
 
 class EditAtmForm extends React.Component {
 	render(){
-		console.log(this.props.atmToEdit.bank);
-		console.log(this.props.atmToEdit.area);
-		console.log("banklocation: ", this.props.atmToEdit.banklocation);
-		console.log("address: ", this.props.atmToEdit.address);		
+		// console.log(this.props.atmToEdit.bank);
+		// console.log(this.props.atmToEdit.area);
+		// console.log("banklocation: ", this.props.atmToEdit.banklocation);
+		// console.log("address: ", this.props.atmToEdit.address);		
 		let urlToPut = "/update_edit/" + this.props.atmToEdit.id + "?_method=PUT";
 		return (
 			<DefaultLayout>

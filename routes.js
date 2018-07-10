@@ -6,6 +6,7 @@ module.exports = (app, db) => {
 	//routes related to users
 	//app.get('/', usersController.get);
 	app.get('/', usersController.getHomeLoginPage);
+	app.get('/home', usersController.getHomePage);
 	app.get('/signUpForm', usersController.getSignUpForm);
 	
 	app.post('/userHome', usersController.logUserIn);

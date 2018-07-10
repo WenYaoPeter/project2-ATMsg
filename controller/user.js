@@ -6,6 +6,10 @@ module.exports = function(db) {
 	// 	response.send('ATMSS from user controller');
 	// }
 
+	const getHomePage = (request, response) => {
+		response.render('userHomePage');
+	}
+
 	const getHomeLoginPage = (request, response) => {
 		response.render('homeLoginSignUp');
 	}
@@ -53,6 +57,7 @@ module.exports = function(db) {
 
 					if((user_nameInput === row.user_name) && (user_hashedPw === row.password)){
 						response.render('userHomePage');
+					
 					} else if ((user_nameInput === row.user_nameInput) || (user_hashedPw !== row.password)) {
 						//alert to enter correct password
 					} else if ((user_nameInput !== row.user_nameInput) || (user_hashedPw === row.password)) {
@@ -65,6 +70,7 @@ module.exports = function(db) {
 
 	return {
 		// get : get,
+		getHomePage : getHomePage,
 		getHomeLoginPage : getHomeLoginPage,
 		getSignUpForm : getSignUpForm,
 		logUserIn : logUserIn,

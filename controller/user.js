@@ -35,7 +35,12 @@ module.exports = function(db) {
 		        console.log('QUERY ERROR IN REGISTERING NEW USER', err.stack);
 		      } else {
 		        console.log('QUERY RESULT FOR REGISTERING NEW USER', result.rows);
-					response.render('userHomePage');
+		        let signedUpNewUser = "New Account Created";
+		        let content = {
+		        	signedUpMsg : signedUpNewUser	
+		        }
+
+					response.render('userHomePage', content);
 		      }
 			});
 		}

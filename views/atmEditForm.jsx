@@ -11,12 +11,32 @@ class EditAtmForm extends React.Component {
 		return (
 			<DefaultLayout>
 				<h3>Edit ATM </h3>
+
 					<form method="POST" action={urlToPut}>
-						Edit Bank: <input name="bank" type="text" defaultValue={this.props.atmToEdit.bank}/>
-						Edit Area: <input name="area" type="text" defaultValue={this.props.atmToEdit.area}/>
-						Edit Location: <input name="banklocation" type="text" defaultValue={"banklocation: ", this.props.atmToEdit.banklocation}/>
-						Edit Address: <input name="address" type="text" defaultValue={"address: ", this.props.atmToEdit.address}/>
-						<input type="submit" value="Submit"/>
+					   		<label for="" class="col-sm-2 col-form-label">Edit Bank</label>
+							    <div class="col-sm-10">
+							      <input type="text" defaultValue={this.props.atmToEdit.bank} class="form-control" name="bank"/>
+								</div>
+
+
+					   		<label for="" class="col-sm-2 col-form-label">Edit Area</label>
+							    <div class="col-sm-10">
+							      <input type="text" defaultValue={this.props.atmToEdit.area} class="form-control" name="area"/>
+								</div>
+
+
+					   		<label for="" class="col-sm-2 col-form-label">Edit Location</label>
+							    <div class="col-sm-10">
+							      <input type="text" defaultValue={this.props.atmToEdit.banklocation} class="form-control" name="banklocation"/>
+								</div>
+
+
+					   		<label for="" class="col-sm-2 col-form-label">Edit Address</label>
+							    <div class="col-sm-10">
+							      <input type="text" defaultValue={this.props.atmToEdit.address} class="form-control" name="address"/>
+								</div>
+
+							<button type="submit" class="btn btn-primary mb-2">Submit Edit</button>
 					</form>
 			</DefaultLayout>
 		);

@@ -25,14 +25,14 @@ class FindAtm extends React.Component {
 			        	</select>
 
 	         			<label for="searchByArea">Search By Area</label>
-	         			<br/>
+	         				<br/>
 			            <select id="areas" name="chosenArea">
 			            	<option value=""></option>
 				            {this.props.atmsAreas.map(atmsArea => (
 				              <option value={atmsArea.area}>{atmsArea.area}</option>
 				            ))}
 			            </select>
-			            <br/>
+			            	<br/>
           				<button type="submit" className="btn btn-primary">Submit</button>
           			
           			</div>

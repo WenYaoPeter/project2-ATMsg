@@ -33,13 +33,12 @@ module.exports = function(db) {
 		 	if(err) {
 				console.log('Query error in listAtms function', err.stack);
 		 	} else {
-				console.log('Query result for list of atms')
-				let x;
+				console.log('Query result for list of atms');
+
 				let content = {
 					atms : result.rows,
 					userBank : userBank,
-					userArea : userArea,
-					randomX : x
+					userArea : userArea
 				}
 		 		response.render('listOfAtm', content);
 			}

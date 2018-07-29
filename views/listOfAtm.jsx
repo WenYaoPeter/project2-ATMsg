@@ -21,9 +21,11 @@ class ListOfAtms extends React.Component {
 	                         			<br/>
 	                         			<button type="submit" className="btn btn-sm btn-outline-success">Edit</button>
 	                        		</form>
+
 		                      		<form method="POST" action={"/delete_atm/"+atm.id+"?_method=delete"}>          
 		                            	<button type="submit" className="btn btn-sm btn-outline-danger">Delete</button>
-		                      		</form>                         
+		                      		</form>     
+
                       			</p>
                       		</div>
                   		</div>

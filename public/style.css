@@ -1,0 +1,42 @@
+span {
+	color : red;
+}
+
+.whiteSg {
+	color : white;
+}
+
+.btn-info {
+	margin-top: 8px;
+}
+
+.banner {
+	margin-bottom: 0;
+}
+
+.card-img-top {
+	height: 225px; 
+	width: 100%; 
+	display: block;
+}
+
+.card-body{
+	padding: 0 20px;
+}
+
+.btn-primary {
+	margin: 10px 0 0 25px;
+}
+
+.btn-outline-danger {
+	margin-top: 10px;
+}
+
+.btn-outline-success {
+	margin-top: 5px;
+}
+
+.searchBtn {
+	width: 102.97px;
+}
+

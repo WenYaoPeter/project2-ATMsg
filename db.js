@@ -15,6 +15,24 @@ if (process.env.DATABASE_URL) {
 		ssl: true
 	};
 
+	const poolObj = new pg.Pool(config);
+
+	poolObj.on('error', function(err) {
+		console.log('Error connecting to ATMsg Database', err.message, err.stack);
+	});
+	
+	const userModel = require('./models/user');
+	const atmModel = require('./models/atm');
+	
+	const userObj = userModel(poolObj);
+	const atmObj = atmModel(poolObj);
+	
+	module.exports = {
+		pool : poolObj,
+		user : userObj,
+		atm : atmObj
+	}
+
 } else {
 
 	const config = {
@@ -23,23 +41,24 @@ if (process.env.DATABASE_URL) {
 		database: 'ATMsg',
 		port: 5432
 	};
+	const poolObj = new pg.Pool(config);
 
+	poolObj.on('error', function(err) {
+		console.log('Error connecting to ATMsg Database', err.message, err.stack);
+	});
+	
+	const userModel = require('./models/user');
+	const atmModel = require('./models/atm');
+	
+	const userObj = userModel(poolObj);
+	const atmObj = atmModel(poolObj);
+	
+	module.exports = {
+		pool : poolObj,
+		user : userObj,
+		atm : atmObj
+	}
 }
 
-const poolObj = new pg.Pool(config);
 
-poolObj.on('error', function(err) {
-	console.log('Error connecting to ATMsg Database', err.message, err.stack);
-});
 
-const userModel = require('./models/user');
-const atmModel = require('./models/atm');
-
-const userObj = userModel(poolObj);
-const atmObj = atmModel(poolObj);
-
-module.exports = {
-	pool : poolObj,
-	user : userObj,
-	atm : atmObj
-}

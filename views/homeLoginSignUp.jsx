@@ -26,7 +26,7 @@ class Home extends React.Component {
 								</div>
 							</div>
 
-							<div className="row justify-content-md-center justify-content-sm-center text-center" cz-shortcut-listen="true">
+							<div className="row justify-content-md-center justify-content-sm-center justify-content-xs-center text-center" cz-shortcut-listen="true">
 								<form className="form-signin " action="/userHome" method="POST">
 								
 									<h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>

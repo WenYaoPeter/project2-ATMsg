@@ -11,7 +11,7 @@ class FindAtm extends React.Component {
 
 		return (
 			<DefaultLayout>
-			<div className="row justify-content-md-center search">
+			<div className="row justify-content-md-center justify-content-sm-center">
 
 				<form action="/list_of_Atms" method="POST">
          			<div className="form-group">

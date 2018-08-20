@@ -26,7 +26,7 @@ class Home extends React.Component {
 								</div>
 							</div>
 
-							<div className="row justify-content-md-center text-center" cz-shortcut-listen="true">
+							<div className="row justify-content-md-center justify-content-sm-center text-center" cz-shortcut-listen="true">
 								<form className="form-signin " action="/userHome" method="POST">
 								
 									<h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
@@ -46,7 +46,7 @@ class Home extends React.Component {
 									  </label>
 									</div>
 
-									<button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>		
+									<button className="btn btn-lg btn-primary btn-block signIn" type="submit">Sign in</button>		
 								</form>
 							</div>
 

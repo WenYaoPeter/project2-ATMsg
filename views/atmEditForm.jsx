@@ -36,7 +36,7 @@ class EditAtmForm extends React.Component {
 							      <input type="text" defaultValue={this.props.atmToEdit.address} class="form-control" name="address"/>
 								</div>
 
-							<button type="submit" class="btn btn-primary mb-2">Submit Edit</button>
+							<button type="submit" class="btn btn-primary mb-2 edit">Submit Edit</button>
 					</form>
 			</DefaultLayout>
 		);

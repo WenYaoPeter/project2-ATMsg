@@ -40,3 +40,8 @@ span {
 	width: 102.97px;
 }
 
+/* @media only screen and (max-width: 767px) {
+	.signin, search{
+		align-items: center;
+	}
+} */

@@ -11,7 +11,7 @@ class FindAtm extends React.Component {
 
 		return (
 			<DefaultLayout>
-			<div className="row justify-content-md-center">
+			<div className="row justify-content-md-center search">
 
 				<form action="/list_of_Atms" method="POST">
          			<div className="form-group">
@@ -33,7 +33,7 @@ class FindAtm extends React.Component {
 				            ))}
 			            </select>
 			            	<br/>
-          				<button type="submit" className="btn btn-primary">Submit</button>
+          				<button type="submit" className="btn btn-primary submit">Submit</button>
           			
           			</div>
 				</form>

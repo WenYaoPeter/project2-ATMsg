@@ -13,8 +13,8 @@ class FindAtm extends React.Component {
 			<DefaultLayout>
 			<div className="row justify-content-md-center justify-content-sm-center">
 
-				<form action="/list_of_Atms" method="POST">
-         			<div className="form-group search">
+				<form className="search" action="/list_of_Atms" method="POST">
+         			<div className="form-group">
          			 	
          			 	<label for="searchByArea">Search By Bank</label>
 	        			<select className="form-control" id="banks" name="chosenBank">

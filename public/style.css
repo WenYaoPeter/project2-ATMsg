@@ -40,6 +40,12 @@ span {
 	width: 102.97px;
 }
 
-.signIn {
+.signInBtn {
 	margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+	.signIn, .signUp, .search{
+		margin: 0 auto;
+	}
 }
